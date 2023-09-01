@@ -9,10 +9,10 @@ programa
 	inteiro vida = 100
 	cadeia arma = "Revólver"
 	inteiro balas = 6
-	cadeia titulo = "O Viajante"
+	cadeia titulo = " Viajante"
 	cadeia habilidade = ""
 	inteiro nivel_respeito = 60
-	real dolares=10.00
+	real dolares=50.00
 	inteiro missaoAceita=0
 	inteiro comeco=0
 	cadeia Enter=""
@@ -21,7 +21,7 @@ programa
 	inteiro danoLoucoClay
 	inteiro sorte
 	inteiro verifica=0
-	
+	inteiro opcao = 0
 	
 	funcao inicio()
 	{
@@ -99,10 +99,12 @@ programa
 		u.aguarde(time)
 		escreva("\nEra o nome de um homem: Louco Clay.")
 		u.aguarde(time)
-		escreva("\nSob o nome, um rótulo intrigante - O Pistoleiro Mais Perigoso.")
+		escreva("\nSob o nome, um rótulo intrigante - O Pistoleiro Mais Perigoso.\n")
 		u.aguarde(time)
-		escreva("\n\nPressione Enter para continuar!")
+		escreva("\n------------------------------\n")
+		escreva("\nPressione Enter para continuar!")
 		leia(Enter)
+		info_personagem()
 
 		limpa()
 		escreva("\n------------------------------")
@@ -128,12 +130,13 @@ programa
 			escreva("Ao se aproximar do bar, o Barman pergunta:\n")
 			u.aguarde(time)
 			escreva("- Deseja algo,", titulo,"?\n")
+			escreva("\n------------------------------\n")
 			escreva("\nEnter...")
 			leia(Enter)
 			limpa()
 			
 			
-				cadeia dialogo1="1 - Um copo de Whisky com conhaque\n"
+				cadeia dialogo1="1 - Um copo de Whisky com conhaque(3,50)\n"
 				cadeia dialogo2="2 - Quem é o homem do cartaz\n"
 				cadeia dialogo3="3 - Tem alguma informação sobre onde Louco Clay está?\n"
 				enquanto(pergunta_ao_barman != 3)
@@ -147,13 +150,14 @@ programa
 				escreva("------------------------------\n")
 				escreva("Escolha uma opção: ")
 				leia(pergunta_ao_barman)
-				escreva("\n")
-				escreva("\n------------------------------")
 				
 				
 				escolha(pergunta_ao_barman)
 				{
 					caso 1:
+					
+					dolares = dolares - 3.50
+					
 					limpa()
 					escreva("Escolha uma opção: ",pergunta_ao_barman)
 					escreva("\n------------------------------\n")
@@ -165,7 +169,7 @@ programa
 						escreva("\n------------------------------\n")
 						u.aguarde(time)
 						dialogo1=""
-						
+                       	
 					pare
 					
 					caso 2:
@@ -229,6 +233,7 @@ programa
 						u.aguarde(time)
 						escreva("Agradecendo ao Barman pelas informações, Mortimer decidiu que era hora de se dirigir a\n")
 						escreva("Tombstone, onde ele teria a oportunidade de enfrentar Louco Clay.\n")
+						escreva("\n------------------------------\n")
 						u.aguarde(time)
 						
 					pare
@@ -250,6 +255,7 @@ programa
 			escreva("- Irei atás de seu paradeiro em Tombstone.")
 			escreva("A cidade famosa por seus atiradores.\n")
 			u.aguarde(time)
+			escreva("\n------------------------------\n")
 		}
 		escreva("\nEnter...")
 		leia(Enter)
@@ -327,7 +333,9 @@ programa
 			limpa()
 			escreva("\n------------------------------------------------------\n")
 			escreva("Você foi covarde e não foi para Tombstone. Fim de Jogo.")
-			escreva("\n-----------------------------------------\n")
+			escreva("\n------------------------------------------------------\n")
+			escreva("\nEnter...")
+			leia(Enter)
 			inicio()
 			
 			pare
@@ -336,36 +344,33 @@ programa
 			pare
 		}
 	  }
+	 
 	}
 	
 	funcao info_personagem()
 	{
 		cadeia enter=""
+		limpa()
 		escreva("\n------ Info Personagem ------\n")
 		escreva("Nome: Mortimer Grover\n")
 		escreva("Vida: " + vida + "/100\n")
-		escreva("Dólares: " + dolares + "/100\n")
+		escreva("Dólares: " + dolares + "\n")
 		escreva("Arma: " + arma + "\n")
 		escreva("Balas: " + balas + "\n")
 		escreva("Título: " + titulo + "\n")
 		escreva("Nível de Respeito com Desconhecidos: " + nivel_respeito + "\n")
 		escreva("------------------------------")
+		escreva("\n\nEnter...")
 		leia(enter)
+		limpa()
 		
-		// Verificar se o jogador aceitou a missão
-		se(opcao1 == 1)
-		{
-			sairCidade()
-		}
-		se(comeco == 1)
-		{
-			inicio_do_jogo()
-		}
 	}
 	
 	funcao sairCidade()
 	
 	{
+		titulo = "O Caçador"
+	     info_personagem()
 		limpa()
 		escreva("Escolha uma opção: ", opcao1)
 		escreva("\n------------------------------\n")
@@ -383,7 +388,7 @@ programa
 		escreva("\nMortimer Grover partiu em direção a Tombstone,")
 		escreva("\ndeterminado a enfrentar Louco Clay.\n")
 		u.aguarde(time)
-	
+	     escreva("\n------------------------------\n")
 		escreva("\nEnter...")
 		leia(Enter)
 		indio()
@@ -403,7 +408,8 @@ programa
 		u.aguarde(time)
 		escreva("\nMortimer sentia receio e dúvida ao observar o velho indígena.")
 		u.aguarde(time)
-		escreva("\n\nVocê pode ajudá-lo ou ignorar o pedido e seguir com sua missão.\n")
+		escreva("\n\nEle poderá ajudá-lo ou ignorar o pedido e seguir com sua missão.\n")
+		escreva("\n------------------------------\n")
 		escreva("\nEnter...")
 		leia(Enter)
 		u.aguarde(time)
@@ -445,9 +451,9 @@ programa
 				escreva("O velho indígena apenas sorriu e respondeu:\n")
 				u.aguarde(time)
 				escreva("- Você saberá em breve.\n")
+				escreva("\n------------------------------\n")
 				u.aguarde(time)
-                    escreva("\nEnter...")
-                    
+                    escreva("\nEnter...")                  
 				leia(Enter)
 
 				
@@ -459,6 +465,7 @@ programa
 				escreva("Escolha uma opção: ", opcao1)
 				escreva("\n------------------------------\n")
 				escreva("\nMortimer decidiu ignorar o pedido de ajuda do velho indígena e continuou seu caminho.\n")
+				escreva("\n------------------------------\n")
 				u.aguarde(time)
 				escreva("\nEnter...")
 				leia(Enter)
@@ -485,27 +492,30 @@ programa
 		escreva("\nA jornada era árdua, mas Mortimer estava disposto a enfrentar todos os obstáculos em seu caminho,")
 		u.aguarde(time)
 		escreva("\npois sabia que seu destino estava além dessas montanhas.\n")
+		escreva("\n------------------------------\n")
 		u.aguarde(time)
 		escreva("\nEnter...")
 		leia(Enter)
 		limpa()
 		u.aguarde(time)
+		escreva("\n------------------------------\n")
 		escreva("\nÀ medida que se aproximava de Tombstone, a agitação e a animação tomavam conta da paisagem.")
 		u.aguarde(time)
 		escreva("\nO som dos cascos dos cavalos e das carruagens enchia o ar,")
 		escreva("\nenquanto conversas animadas ecoavam pelas ruas.")
 		u.aguarde(time)
 		escreva("\nO cheiro de fumaça, poeira e suor impregnava o ambiente,")
-		escreva("\nrevelando a vida caótica e vibrante da cidade fronteiriça.")
+		escreva("\nrevelando a vida caótica e vibrante da cidade fronteiriça.\n")
 		u.aguarde(time)
 		escreva("\n------------------------------\n")
-
+          escreva("\nEnter...")
+		leia(Enter)
 		emboscada()
 	}
 
 	funcao emboscada()
      {
-	    inteiro balas_e = 6
+	    inteiro balas_e = 12
 	    inteiro bandidosRestantes = 4
 
 	    limpa()
@@ -520,6 +530,7 @@ programa
 	    u.aguarde(time)
 	    escreva("Você terá que confrontar os bandidos, se quiser sair dessa sem perder todo seu dinheiro.\n")
 	    u.aguarde(time)
+	    escreva("\n------------------------------\n")
 	    escreva("\nEnter...")
 	    leia(Enter)
 	    limpa()
@@ -529,13 +540,15 @@ programa
 	    u.aguarde(time)
 	    escreva("Você está em uma situação complicada.\n")
 	    escreva("Você não pode desperdiçar balas.\n")
+	    escreva("\n------------------------------\n")
 	    escreva("\nEnter...")
 	    leia(Enter)
 	    limpa()
+	    info_personagem()
 	       
 	    para(inteiro i = 0; i < balas_e; i++)
 	    {
-	        inteiro tempo = u.sorteia(1, 2)
+	        inteiro tempo = u.sorteia(1,2)
 	        inteiro resp
 	   
 	        
@@ -552,21 +565,19 @@ programa
 	            bandidosRestantes = bandidosRestantes - 1
 	            escreva("\nVocê acertou!\n")
 	            balas_e = balas_e - 1
-
-	        pare
+	            
 	        }
 	        senao
 	        {
 	            escreva("\nVocê errou!\n")
 	            balas_e = balas_e - 1
-
-	        pare    
+	            
 	        }
 	        
 	    }
 	    u.aguarde(3 * time)
 	
-	    se (bandidosRestantes == 0)
+	    se (bandidosRestantes <= 0)
 	    {
 	    	
 			   inteiro opcao = 0 
@@ -576,14 +587,15 @@ programa
 		        leia(Enter)
 		        limpa()
 		        escreva("\n------------------------------\n")
-		        escreva("Mortimer conseguiu matar todos os bandidos da emboscada.\n")
+		        escreva("\nMortimer conseguiu matar todos os bandidos da emboscada.\n")
 		        u.aguarde(time)
 		        escreva("Você pode saquear os corpos ou não.\n")
+		        escreva("\n------------------------------\n")
 		        u.aguarde(time)
 			   escreva("\nEnter...")
 		        leia(Enter)
 		        
-          enquanto(bandidosRestantes == 0)
+          enquanto(bandidosRestantes <= 0)
           {
           	
       
@@ -601,21 +613,39 @@ programa
 		     {   
 		     	
 			   caso 1:
-			   
+
+			        escreva("\n------------------------------\n")
 			        escreva("\nComo recompensa, Mortimer encontra uma bolsa com dinheiro escondida em um dos corpos.\n")
 			        u.aguarde(time)
 			        escreva("Recolhe o dinheiro e continua sua jornada.\n")
 			        u.aguarde(time)
-			        escreva("\nVocê coletou 50 dólores")
+			        escreva("\nVocê coletou 50 dólares\n")
+			        escreva("\n------------------------------\n")
+			        dolares = dolares + 50.00  // Adiciona 50 dólares ao dinheiro de Mortimer
+
+                       escreva("\nEnter...")
+			        leia(Enter)
+			        limpa()
+		             info_personagem()
+		             escreva("\n------------------------------\n")
+			        escreva("\nVocê segue seu caminho até que, finalmente, chega em Tombstone...\n")
+			        escreva("\n------------------------------\n")
+			        u.aguarde(time)
+			        escreva("\nEnter...")
+			        leia(Enter)
 			        
-			        dolares = dolares + 50  // Adiciona 50 dólares ao dinheiro de Mortimer
-			        
-			   pare
+			        Chegada_Tombstone()
+		        
 				    
 			   caso 2:
-			   
-                       escreva("Você Ignorou os corpos\n")
-                       
+			        escreva("\n------------------------------\n")
+                       escreva("\nVocê Ignorou os corpos\n")
+                       escreva("\n------------------------------\n")
+                        u.aguarde(time)
+			        escreva("\nEnter...")
+			        leia(Enter)
+			        
+			        Chegada_Tombstone()
 			   pare
 		     }
 	       }
@@ -627,9 +657,9 @@ programa
 	        leia(Enter)
 	        limpa()
 	        escreva("\n------------------------------\n")
-	        escreva("Mortimer, sem munição, percebe que ainda restam bandidos vivos na emboscada.\n")
+	        escreva("\nMortimer, sem munição, percebe que ainda restam bandidos vivos na emboscada.\n")
 	        u.aguarde(time)
-	        escreva("Você não tem escolha, terá de deixar que levem seu dinheiro.\n")
+	        escreva("Ele não tem escolha, terá de deixar que levem seu dinheiro.\n")
 	        u.aguarde(time)
 	
 	        inteiro dolaresPerdidos = bandidosRestantes * 10
@@ -641,10 +671,15 @@ programa
 	        u.aguarde(time)
 	        escreva("Essa derrota afetou o ego de Mortimer, mas continuou na sua caçada de Louco Clay\n")
 	        u.aguarde(time)
-
+	        escreva("\n------------------------------\n")
+             escreva("\nEnter...")
+	        leia(Enter)
+	        limpa()
+             info_personagem()
          }
-         
-             escreva("Você segue seu caminho até que, finalmente, chega em Tombstone.\n")
+             escreva("\n------------------------------\n")
+             escreva("\nVocê segue seu caminho até que, finalmente, chega em Tombstone.\n")
+             escreva("\n------------------------------\n")
 	        u.aguarde(time)
 	        escreva("\nEnter...")
 	        leia(Enter)
@@ -678,13 +713,15 @@ programa
 	    u.aguarde(time)
 	    escreva("\nOs olhares curiosos se voltam para Mortimer, um estranho na cidade.")
 	    u.aguarde(time)
-	    escreva("\nCochichos e murmúrios se espalham enquanto você passa.")
+	    escreva("\nCochichos e murmúrios se espalham enquanto você passa.\n")
+	    escreva("\n------------------------------\n")
 	    u.aguarde(time)
-	    escreva("\n\nEnter...")
+	    escreva("\nEnter...")
 	    leia(Enter)
 	    limpa()
 	    u.aguarde(time)	    
-	    escreva("\n\nSeus passos o levam até a praça central, onde cascos de cavalos ecoam.")
+	    escreva("\n------------------------------\n")
+	    escreva("\nSeus passos o levam até a praça central, onde cascos de cavalos ecoam.")
 	    u.aguarde(time)
 	    escreva("\nUma estátua imponente de um xerife lendário chama sua atenção.")
 	    u.aguarde(time)
@@ -701,9 +738,9 @@ programa
 	    u.aguarde(time)
 	    escreva("\nAo se aproximar, Louco Clay percebe sua presença.")
 	    u.aguarde(time)	    
-	    escreva("\nLouco Clay se levanta calmamente e caminha até a porta do Saloon .")
-	    u.aguarde(time)
-	    escreva("\n\nEnter...")
+	    escreva("\nLouco Clay se levanta calmamente e caminha até a porta do Saloon.\n")
+	    escreva("\n------------------------------\n")
+	    escreva("\nEnter...")
 	    leia(Enter)
     
 	    Luta_Louco_Clay()
@@ -727,12 +764,14 @@ programa
 		escreva("\nVocê pode sentir a tensão no ar enquanto engatilha sua arma e fixa seu olhar no adversário.")
 		u.aguarde(time)
 		escreva("\nA vida de Mortimer Grover depende deste momento decisivo.\n")
+		escreva("\n------------------------------\n")
 		u.aguarde(time)
 		escreva("\nEnter...")
 		leia(Enter)
 		limpa()
+		info_personagem()
 		
-		enquanto (vidaLoucoClay>=0)
+		enquanto (vidaLoucoClay >= 0)
 		{
 			// Mostra informações da luta
 			
@@ -791,44 +830,61 @@ programa
 			u.aguarde(time)
 			
 			// Verifica se o jogador ou Louco Clay foi derrotado
+			
+			
 			se (vida <= 0)
 			{
+				u.aguarde(15*time)
 				limpa()
 				escreva("\nVocê levou um tiro certeiro em seu peito.") 
-				u.aguarde(10*time)
+				u.aguarde(15*time)
 				limpa()
 				escreva("\nVocê Morreu!")
-				u.aguarde(20*time)
+				u.aguarde(25*time)
 				limpa()
 				missaoSecreta()
 				
 			}
+			
 			senao se (vidaLoucoClay <= 0)
 			{
 				se( missaoAceita==1)
 				{				
 					escreva("\nVocê derrotou Louco Clay! Parabéns, Mortimer Grover!")
-					
+					u.aguarde(15*time)
 					// Aqui você pode implementar ações para o fim do jogo
 				}
 				senao
 				{
-					escreva("\nVocê derrotou Louco Clay! Parabéns, Mortimer Grover!")	
+					escreva("\nVocê derrotou Louco Clay! Parabéns, Mortimer Grover!")
+					u.aguarde(15*time)	
 				}
 			}
+			
 		}
-	}funcao morte_personagem()
+		
+		info_personagem()
+		dialogo()
+	}
+	
+	funcao morte_personagem()
+	
 	{
 		limpa()
 		escreva("\n--------------------------------------------------------------")
 		escreva("\nVocê morreu. Seu destino chegou ao fim.")
 		escreva("\nSeu nome e suas ações serão esquecidos, e sua jornada termina aqui.")
 		escreva("\n\nFim do Jogo.")
-		escreva("\n--------------------------------------------------------------")
+		escreva("\n--------------------------------------------------------------\n")
+          escreva("\nEnter...")
+          leia(Enter)
+	     inicio()
+			        
 	}
 	
 	funcao missaoSecreta() 
 	{
+          opcao1 = 99
 		
 		u.aguarde(time)
 		escreva("\n----- Missão Secreta -----\n")
@@ -859,8 +915,10 @@ programa
 		escreva("que isso pode trazer para sua jornada e para seu próprio destino.\n\n")
 		escreva("Deseja aceitar a missão e tentar outra luta com Louco Clay?\n")
 		u.aguarde(time)
+		
 		enquanto(opcao1!=1 e opcao1!=2)
 		{
+		
 			escreva("1 - Aceitar\n")
 			escreva("2 - Recusar\n")
 			escreva("--------------------------\n")
@@ -891,11 +949,13 @@ programa
 					escreva("\nOpção inválida. A missão não pode ser realizada.")
 			}
 		}
+	    info_personagem()
 	} 
 		
 	funcao dialogo()
 	{
-		escreva("\n--------------------------------------------------------------")
+		
+		escreva("\n--------------------------\n")
 		escreva("\nEnquanto Mortimer observava seu peito curado pelo contrato,\n")
 		escreva("ele percebeu o buraco em suas roupas, resultado do confronto mortal.\n")
 		u.aguarde(time)
@@ -908,12 +968,14 @@ programa
 		escreva("Era uma construção modesta, mas as roupas expostas na vitrine indicavam\n")
 		escreva("que ali ele poderia encontrar o que precisava. Com passos determinados,\n")
 		escreva("ele se dirigiu à loja, deixando algumas moedas no corpo de Louco Clay.\n")
+		escreva("\n--------------------------\n")
 		u.aguarde(time)
 
-          escreva("\n\nEnter...")
+          escreva("\nEnter...")
 		leia(Enter)
 		limpa()
-		escreva("\n\nCom o dinheiro do seu derrotado oponente em mãos, Mortimer seguiu\n")
+		escreva("\n--------------------------\n")
+		escreva("\nCom o dinheiro do seu derrotado oponente em mãos, Mortimer seguiu\n")
 		escreva("em direção à loja. Ao entrar, ele foi recebido por um velho e experiente\n")
 		escreva("alfaiate, cujo olhar astuto parecia captar as histórias de cada cliente\n")
 		escreva("que adentrava o estabelecimento.\n")
@@ -922,12 +984,14 @@ programa
 		escreva("\n\nApós adentrar a loja, Mortimer foi recebido pelo velho alfaiate, cujo olhar\n")
 		escreva("astuto denotava sua experiência no ofício. O homem idoso cumprimentou Mortimer\n")
 		escreva("com um aceno de cabeça, aguardando para saber quais roupas ele desejava adquirir.\n")
+		escreva("\n--------------------------\n")
 		u.aguarde(time)
-
-		escreva("\n\nEnter...")
+		
+		escreva("\nEnter...")
 		leia(Enter)
 		limpa()
-		escreva("\n\nCom determinação, Mortimer respondeu: 'Eu quero roupas pretas'. Seu pedido\n")
+		escreva("\n--------------------------\n")
+		escreva("\nCom determinação, Mortimer respondeu: 'Eu quero roupas pretas'. Seu pedido\n")
 		escreva("era claro e objetivo, refletindo sua aura sombria e misteriosa. Ele tinha em\n")
 		escreva("mente uma imagem específica: 'Um homem vestido com uma longa capa preta, um\n")
 		escreva("chapéu de abas largas e um lenço cobrindo parte do rosto'.\n")
@@ -937,12 +1001,14 @@ programa
 		escreva("suas prateleiras e gavetas, selecionando as peças necessárias para criar o traje\n")
 		escreva("desejado por Mortimer. Com habilidade e destreza, ele costurou a capa, ajustou\n")
 		escreva("o chapéu e selecionou um lenço de tecido fino.\n")
+		escreva("\n--------------------------\n")
 		u.aguarde(time)
 
-		escreva("\n\nEnter...")
+		escreva("\nEnter...")
 		leia(Enter)
 		limpa()
-		escreva("\n\nAssim que Mortimer vestiu o traje negro, ele sentiu uma sensação de poder e\n")
+		escreva("\n--------------------------\n")
+		escreva("\nAssim que Mortimer vestiu o traje negro, ele sentiu uma sensação de poder e\n")
 		escreva("mistério envolvendo-o. O alfaiate observou com admiração enquanto Mortimer\n")
 		escreva("ajustava a capa em seus ombros e abaixava o chapéu, ocultando parte do rosto.\n")
 		escreva("Era como se o próprio diabo tivesse ganhado forma no corpo do pistoleiro.\n")
@@ -959,24 +1025,17 @@ programa
 		escreva("negro era a manifestação física dessa conexão.\n")
 		u.aguarde(time)
 		
-		escreva("\n--------------------------------------------------------------\n")
+		escreva("\n--------------------------\n")
 		escreva("\nEnter...")
-		comeco = 1
-	
-	}
-	
-	funcao inicio_do_jogo()
-	{
-	inteiro opcao2=0
-	info_personagem()
-	escreva("\n\n\n\n\\nol")
-	
-	
+          leia(Enter)
+		
+		
+	    encontroHomemEstranho()
 	}
 
 	funcao habilidades()
 	{
-		escreva("------------------------------\n")
+		
 		cadeia observacao1
 		cadeia observacao2
 		cadeia observacao3
@@ -987,8 +1046,8 @@ programa
 			cadeia quatro="4 - Sorte infinita"
 			enquanto(opcao1!=1 e opcao1!=2 e opcao1!=3 e opcao1!=4)
 		{
-			sorte=u.sorteia(0, 100)
-			escreva("\nMortimer Decide ficar na pequena e pacata cidade de Valentyne ")
+			sorte=u.sorteia(1, 100)
+		     limpa()
 			escreva("\n----- Tela de Escolha -----")
 			escreva("\n",um)
 			escreva("\n",dois)
@@ -997,7 +1056,7 @@ programa
 			escreva("\n---------------------------\n")
 			escreva("Escolha uma opção: ")
 			leia(opcao1)
-			limpa()
+			
 			escolha(opcao1)
 			{
 				
@@ -1011,7 +1070,7 @@ programa
 					}
 					senao
 					{
-					escreva("você falhou em adquirir a habilidade.")
+					escreva("\nvocê falhou em adquirir a habilidade.")
 					}
 				pare
 				caso 2:
@@ -1024,7 +1083,7 @@ programa
 					}
 					senao
 					{
-					escreva("você falhou em adquirir a habilidade.")
+					escreva("\nvocê falhou em adquirir a habilidade.")
 					}
 				pare
 				caso 3:
@@ -1037,7 +1096,7 @@ programa
 					}
 					senao
 					{
-					escreva("você falhou em adquirir a habilidade.")
+					escreva("\nvocê falhou em adquirir a habilidade.")
 					}
 				pare
 				caso 4:
@@ -1050,7 +1109,7 @@ programa
 					}
 					senao
 					{
-					escreva("você falhou em adquirir a habilidade.")
+					escreva("\nvocê falhou em adquirir a habilidade.")
 					}
 				pare
 				caso contrario:
@@ -1060,37 +1119,129 @@ programa
 			}
 			se(verifica==1)
 			{
-				escreva("Você tem uma otima habilidade, tente usala em alguma coisa no saloon.")
+				escreva("\nVocê tem uma otima habilidade.")
 			}
 			senao
 			{
-				escreva("você é muito azarado, tente fazer algo no saloon")
+				escreva("\nvocê é muito azarado.")
+				escreva("\n\nEnter...")
+	               leia(Enter)
+				segundo_ato_continuacao()
 			}
 			
 		}
+	escreva("\n\nEnter...")
+	leia(Enter)
+	}
+
+	funcao encontroHomemEstranho()
+	{
+         opcao=0
+
 		
+	    limpa()
+	    escreva("\n--------------------------\n")
+	    escreva("\nMortimer vai até o maior Saloon de Tombstone para espairecer sobre o que aconteu.")
+	    u.aguarde(time)
+	    escreva("\nChegando ao Saloon, Mortimer entra com seus passos ecoando no ambiente abafado.")
+	    u.aguarde(time)
+	    escreva("\nEle observa o lugar repleto de pessoas jogando, bebendo e conversando.")
+	    u.aguarde(time)
+	    escreva("\nAo fundo do saloon, em uma mesa escura, Mortimer avista o Homem Estranho.")
+	    u.aguarde(time)
+	    escreva("\nEle está sentado sozinho, olhando fixamente para um copo vazio.")
+	    u.aguarde(time)
+	    escreva("\nMortimer se aproxima da mesa e o Homem Estranho olha para ele, como se já soubesse de sua presença.")
+	    u.aguarde(time)
+	    escreva("\nHomem Estranho:")
+	    escreva("\n- Boa noite, Mortimer. Estava esperando por você.")
+	    u.aguarde(time)
+	    escreva("\nMortimer se senta em uma das cadeiras vazias, encarando o Homem Estranho com cautela.")
+	    u.aguarde(time)
+	    escreva("\nHomem Estranho:")
+	    escreva("\n- Posso lhe oferecer uma ajuda especial, uma habilidade que pode fazer a diferença")
+	    u.aguarde(time)
+	    escreva("\nna missão que te passarei.\n")
+	    escreva("\n--------------------------\n")
+	    u.aguarde(time)
+
+
+	    enquanto(opcao!=1 e opcao!=2)
+         {
+	    // Opções para o jogador
+	    escreva("\nEnter...")
+	    leia(Enter)
+	    limpa()
+	    escreva("\n----- Tela de Escolha -----")
+	    escreva("\n1 - Aceitar a habilidade")
+	    escreva("\n2 - Recusar a oferta")
+	    escreva("\n---------------------------\n")
+	    escreva("Escolha uma opção: ")
+	    leia(opcao)
+	    
+	    escolha(opcao)
+	    {
+	        caso 1:
+	            
+	            habilidades()
+	            escreva("\nHomem Estranho:")
+	            escreva("\n- Muito bem, Mortimer. Essa habilidade irá te auxiliar em sua jornada.")
+	            escreva("\n No entanto, lembre-se de que tudo tem um preço.")
+	            u.aguarde(time)
+	            escreva("\nMortimer sente uma energia sombria envolvê-lo, como se algo tivesse mudado dentro de si.\n")
+	            escreva("\n--------------------------\n")
+	            u.aguarde(time)
+	            
+	            pare
+	        
+	        caso 2:
+	            limpa()
+	            escreva("Escolha uma opção: ", opcao)
+	            escreva("\n--------------------------\n")
+	            escreva("\nMortimer:")
+	            escreva("\n- Eu não preciso de habilidades esxtra. Me passe a missão.")
+	            u.aguarde(time)
+	            escreva("\nHomem Estranho:")
+	            escreva("\n- Como quiser, Mortimer. Espero que esteja preparado para o que virá.\n")
+	            escreva("\n--------------------------\n")
+	            u.aguarde(time)
+	            pare
+	        
+	        caso contrario:
+	            escreva("\nOpção inválida! Escolha 1 ou 2.\n")
+	            pare
+	    }
+     }
+     escreva("\nEnter...")
+     leia(Enter)
+     segundo_ato_continuacao()
 	}
 	
-     funcao segundo_ato()
+     funcao segundo_ato_continuacao()
 	{
 
-         escreva("\n--------------------------------------------------------------")
-	    escreva("\nSaindo do saloon, Mortimer encontra o Homem Estranho esperando por ele,")
-	    escreva("\nsegurando uma lista de nomes. Ele lhe entrega a lista e explica que essa é")
-	    escreva("\nsua última missão. Mortimer deve eliminar todos os nomes da lista para se")
+         limpa()
+         escreva("\n--------------------------\n")
+	    escreva("\nO Homem Estranho lhe entrega uma lista com nomes de homens temidos.")
+	    u.aguarde(time)
+	    escreva("\nMortimer deve eliminar todos os nomes da lista para se")
 	    escreva("\nlibertar do vínculo com o Homem Estranho.")
+	    u.aguarde(time)
+	    escreva("\nEssa será sua missão.")
 	    u.aguarde(time)
 	    escreva("\nCom um olhar sombrio, o Homem Estranho alerta que, uma vez que todos os nomes")
 	    escreva("\nforem riscados, ele não será mais necessário.\n")
 	    u.aguarde(time)	    
-	    escreva("\nDeterminado a concluir essa jornada, Mortimer parte em busca dos nomes da lista.")
+	    escreva("\nDeterminado a concluir essa jornada, Mortimer parte em busca dos nomes da lista.\n")
          u.aguarde(time)
-         escreva("\n\nEnter...")
+         escreva("\n--------------------------\n")
+         escreva("\nEnter...")
 	    leia(Enter)
 	    limpa()
          escreva("10 anos depois...")
          u.aguarde(15*time)
 	    limpa()
+	    escreva("\n--------------------------\n")
          escreva("\nAnos se passaram, Mortimer está diferente, todos esses anos de matança para o ") 
          escreva("\nHomem Estranho mecheram com a cabeça de Motimer Grover.") 
          u.aguarde(time)
@@ -1107,92 +1258,100 @@ programa
 	    escreva("\nmas mesmo obtento a informação, Mortimer o mata")
 	    escreva("\nMortmer descobre que Micah Bell está escondido em uma montanha, ao leste da cidade.\n")
 	    u.aguarde(time) 
-	    escreva("\n--------------------------------------------------------------")
-	    escreva("\n\nEnter...")
+	    escreva("\n--------------------------\n")
+	    escreva("\nEnter...")
 	    leia(Enter)
 	    limpa()
-         escreva("\n--------------------------------------------------------------")
+         escreva("\n--------------------------\n")
 	    escreva("\nChegando ao topo da montanha, Mortimer encontra uma casa pequena e aparentemente")
 	    escreva("\nabandonada. Ao entrar, ele é atacado por Micah Bell, que o acerta com uma facada")
 	    escreva("\nnas costas,  tendo passado pelo inferno durante todos esses anos,") 
 	    escreva("\nMortimer já se acostumou com a dor. A imortalidade tem seu preço.")
 	    escreva("\nMortimer se vira lentamente com uma raiva incessante em seus olhos e reage,")
-	    escreva("\nagarrando Micah pelo pescoço")
+	    escreva("\nagarrando Micah pelo pescoço\n")
+	    escreva("\n--------------------------\n")
 	    u.aguarde(time)
-	    escreva("e enforcando-o .\n")
+	    escreva("\nEnter...")
+	    leia(Enter)
+	    limpa()
+	    balas = 0
+	    arma = "Mão"
+	    info_personagem()
+	    estrangulaMicah()
 	}
 
 	funcao estrangulaMicah()
-{
-    inteiro vidaMortimer = 999999999
-    inteiro vidaMicah = 100
-    
-    
-    	enquanto( vidaMicah >= 0)
-    	{
-
-        inteiro opcao
-
-    		
-        
-        escreva("\n----- Luta com Micah Bell -----")
-        escreva("\nSua vida: ", vidaMortimer)
-        escreva("\nVida de Micah: ", vidaMicah)
-        escreva("\n-------------------------------\n")
-
-        // Opções para o jogador
-        escreva("Escolha sua ação:")
-        escreva("\n1 - Estrangular Micah")
-        escreva("\n2 - Defender-se")
-        escreva("\n-------------------------------\n")
-        escreva("Escolha uma opção: ")
-        leia(opcao)
-        limpa()
-
-        escolha(opcao)
-        {
-            caso 1:
-                // Chance de acerto e dano ao estrangular
-                inteiro chanceAcerto = u.sorteia(1, 100)
-                
-                se (chanceAcerto <= 70)  // 70% de chance de acerto
-                {
-                    inteiro dano_ = u.sorteia(20, 40)
-                    escreva("\nVocê acertou Micah, causando ", dano_, " de dano!")
-                    vidaMicah = vidaMicah - dano_
-                }
-                senao
-                {
-                    escreva("\nVocê errou o estrangulamento!")
-                }
-                pare
-                
-            caso 2:
-                // Micah ataca Mortimer
-                inteiro danoMicah = u.sorteia(10, 30)
-                escreva("\nMicah ataca você, causando ", danoMicah, " de dano!")
-                vidaMortimer = vidaMortimer - danoMicah
-                pare
-                
-            caso contrario:
-                escreva("\nOpção inválida! Escolha 1 ou 2.")
-        }
-      
-        u.aguarde(time)
-    }
-
-    // Verificar o resultado do confronto
-   se (vidaMicah <= 0)
-    {
-        escreva("\nVocê matau o último nome da lista, Micah Bell. ")
-        final_jogo()
-    }
-}
+	{
+	    
+	    inteiro vidaMicah = 100
+	    
+	    
+	    	enquanto( vidaMicah >= 0)
+	    	{
+	
+	        opcao = 0
+	
+	        escreva("\n----- Luta com Micah Bell -----")
+	        escreva("\nSua vida: ", vida)
+	        escreva("\nVida de Micah: ", vidaMicah)
+	        escreva("\n-------------------------------\n")
+	
+	        // Opções para o jogador
+	        escreva("Escolha sua ação:")
+	        escreva("\n1 - Estrangular Micah")
+	        escreva("\n2 - Defender-se")
+	        escreva("\n-------------------------------\n")
+	        escreva("Escolha uma opção: ")
+	        leia(opcao)
+	        limpa()
+	
+	        escolha(opcao)
+	        {
+	            caso 1:
+	                // Chance de acerto e dano ao estrangular
+	                inteiro chanceAcerto = u.sorteia(1, 100)
+	                
+	                se (chanceAcerto <= 70)  // 70% de chance de acerto
+	                {
+	                    inteiro dano_ = u.sorteia(20, 40)
+	                    escreva("\nVocê acertou Micah, causando ", dano_, " de dano!")
+	                    vidaMicah = vidaMicah - dano_
+	                }
+	                senao
+	                {
+	                    escreva("\nVocê errou o estrangulamento!")
+	                }
+	                pare
+	                
+	            caso 2:
+	                // Micah ataca Mortimer
+	                inteiro danoMicah = u.sorteia(10, 30)
+	                escreva("\nMicah ataca você, causando ", danoMicah, " de dano!")
+	                vida = vida - danoMicah
+	                pare
+	                
+	            caso contrario:
+	                escreva("\nOpção inválida! Escolha 1 ou 2.")
+	        }
+	      
+	        u.aguarde(time)
+	    }
+	
+	    // Verificar o resultado do confronto
+	   se (vidaMicah <= 0)
+	    {
+	        escreva("\nVocê matau o último nome da lista, Micah Bell. ")
+	        u.aguarde(15*time)
+	        titulo = "A Sombra da Morte "
+	        info_personagem()
+	        final_jogo()
+	    }
+	}
 	
      funcao final_jogo()
      {
-
-	    escreva("\nA luta é intensa, mas Mortimer prevalece sobre o pistoleiro temido.\n")
+         escreva("\n--------------------------\n")
+	    escreva("\nA luta é intensa, mas Mortimer Grover prevalece sobre o pistoleiro sanguinário.\n")
 	    u.aguarde(time)
 	    escreva("\nCom Micah morto aos seus pés, Mortimer acredita que finalmente está livre da")
 	    escreva("\nmatança e do vínculo com o Homem Estranho.\n")
@@ -1200,44 +1359,42 @@ programa
 	    escreva("\nNo entanto, sua sensação de triunfo é quebrada quando o Homem Estranho aparece diante")
 	    escreva("\ndele.\n")
 	    u.aguarde(time)
-	    escreva("\n--------------------------------------------------------------")
-	    escreva("\n\nEnter...")
+	     
+	    escreva("\nNo entanto, sua sensação de triunfo é quebrada quando  o Homem Estranho")
+	    escreva("\naparece diante dele. O Homem Estranho uma calma e serenidade, fala:\n")
+	    u.aguarde(time)
+	    
+	    escreva("\n- Você fez um ótimo trabalho, Mortimer Grover, mas o")
+	    escreva("\nseu destino não é como você imagina.'\n")
+	    u.aguarde(time)
+	   
+	    escreva("\n--------------------------\n")
+	    escreva("\nEnter...")
 	    leia(Enter)
 	    limpa()
-	    escreva("\n--------------------------------------------------------------")
-	    escreva("Após estrangular Micah Bell até a morte, Mortimer acredita que finalmente")
-	    escreva("estaria livre da matança e do vínculo com o Homem Estranho.\n")
-	    u.aguarde(time)
-	    
-	    escreva("\nNo entanto, sua sensação de triunfo é quebrada quando uma figura misteriosa")
-	    escreva("aparece diante dele.\n")
-	    u.aguarde(time)
-	    
-	    escreva("\nHomem Estranho: 'Você fez um ótimo trabalho, Mortimer Grover, mas a")
-	    escreva("verdadeira natureza do seu destino ainda precisa ser revelada.'\n")
-	    u.aguarde(time)
-	    
+	    escreva("\n--------------------------\n")
 	    escreva("\nMortimer observa perplexo enquanto o Homem Estranho se transforma,")
-	    escreva("revelando uma figura assustadora e sombria.\n")
-	    u.aguarde(time)
-	    
-	    escreva("\nHomem Estranho (voz sombria): 'Eu sou a Morte, aquele que controla a vida")
-	    escreva("e a morte. Você pensou que poderia escapar da sua sina?'\n")
+	    escreva("\nrevelando sua verdadeira face.\n")
+	    u.aguarde(10*time)
+	    escreva("\nA própria Morte.\n")
+	    u.aguarde(5*time)
+	    escreva("\nMorte:")
+	    escreva("\n- Seu destino acaba aqui, Mortimer Grover.")
 	    u.aguarde(time)
 	    
 	    escreva("\nMortimer tenta reagir, mas antes que possa fazer qualquer coisa, a Morte")
-	    escreva("estende a mão em sua direção e a vida de Mortimer se esvai.\n")
+	    escreva("\nestende a mão em sua direção, arrancando de Mortimer Grover a sua vida.\n")
 	    u.aguarde(time)
 	    
 	    escreva("\nO sol se põe sobre o Oeste Selvagem, e Mortimer cai no chão, sem vida.")
-	    escreva("Sua jornada sangrenta e desafiadora chega a um fim abrupto e sombrio.\n")
-	    u.aguarde(time)
+	    escreva("\nSua jornada sangrenta e desafiadora chega a um fim abrupto e sombrio.\n")
+	    u.aguarde(15*time)
 	    
-	    escreva("\nFim do Jogo.")
-	    escreva("\n------------------------------\n")
+	    escreva("\nFim do Jogo.\n")
+	    escreva("\n--------------------------\n")
 	    escreva("\nEnter...")
 	    leia(Enter)
-	   
+	    inicio()
 	}
-     
+	 
 }
